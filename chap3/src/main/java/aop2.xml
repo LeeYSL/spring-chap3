@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/aop
+ http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<bean id="loggingAdvice" class="xml.LoggingAdvice" />
+	<bean id="cacheAdvice" class="xml.ArticleCacheAdvice"/>
+	<aop:config>
+		<aop:aspect id="loggingAspect" ref="loggingAdvice" order="3"> <!-- aspect 클래스로 지정? -->
+			<aop:pointcut id="publicMethod"
+				expression="execution(public * xml..*(..))" /> <!--execution에 속한 모든 메서드를 핵심 메서드로 설정?  -->
+			<aop:before method="before" pointcut-ref="publicMethod" />
+			<!-- 핵심메서드 실행 전 before 메서드 먼저 호출 해라 -->
+			
+			<aop:after-returning method="afterReturning"
+				pointcut-ref="publicMethod" returning="ret" />
+				<!-- aop:after-returning : 핵심 메서드가 정상 종료되면 실행하라 
+				     ret:핵심 메서드의 리턴 값 -->
+				     
+			<aop:after-throwing method="afterThrowing"
+				pointcut-ref="publicMethod" throwing="ex" />
+				<!--aop:after-throwing : 핵심 메서드의 오류 발생 시 예외 객체
+				    afterThrowing : 예외객체  -->
+				<aop:after method="afterFinally" pointcut-ref="publicMethod"/>
+				<!-- aop:after : 메서드 종료 알려줌 매개변수 없어도 됨  -->
+		</aop:aspect>
+		<aop:aspect id="cacheAspect" ref="cacheAdvice" order="2">
+		  <aop:around method="cache"
+		       pointcut="execution(public * *..ReadArticleService.*(..))"/> 
+		       <!--  모든 패키지의 클래스의 이름이 ReadArticleService이 속해있는...? 고정..? -->
+		       
+		 </aop:aspect>
+	</aop:config>
+</beans>
