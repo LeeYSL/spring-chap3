@@ -6,7 +6,7 @@ public class LoggingAdvice {
     }
    public void afterReturning(Object ret) {//ret : 핵심메서드의 리턴값
 	   //ret : new Article(1) 리턴
-	   System.out.println("[LA]메서드 정상 처리 후 수항 함.ret"+ret);
+	   System.out.println("[LA]메서드 정상 처리 후 수행 함.ret="+ret);
    }
    public void afterThrowing(Throwable ex) {//ex : 핵심메서드에서 발생 된 예외 객체
 	   System.out.println("[LA]메서드 예외 발생 후 수행함. 발생 예외="+ex.getMessage());
