@@ -1,0 +1,17 @@
+[ACA] cache before 실행   =>xml.ArticleCacheAdvice.cache() 메서드
+[LA]메서드 실행 전 전처리 수행 기능  =>LoggingAdvice의 before() 메서드
+getArticleAndReadCnt(1) 호출  =>ReadArticleServiceImpl.getArticleAndReadCnt(1) 메서드
+[LA]메서드 정상 처리 후 수항 함.ret=xml.Article@3e27ba32   =>LogginAdvice .afteReturning()메서드
+[LA]메서드 실행 후 수행 함    =>LogginAdvice.afterFinally() 메서드
+[ACA] cache after 실행    =>xml.ArticleCacheAbvice.cache() 메서드
+[ACA] cache에서 Article[1] 추가함    =>xml.ArticleCacheAbvice.cache() 메서드
+[main] a1 : xml.Article@3e27ba32    => main 메서드
+[ACA] cache before 실행    =>xml.ArticleCacheAbvice.cache() 메서드
+[ACA] cache에서 Article[1] 가져옴    =>xml.ArticleCacheAbvice.cache() 메서드
+[main] a1==a2 :true     => main 메서드
+[ACA] cache before 실행  =>xml.ArticleCacheAbvice.cache() 메서드
+[LA]메서드 실행 전 전처리 수행 기능 =>LogginAdvicr.before() 메서드
+getArticleAndReadCnt(0) 호출 =>ReadArticleService.Impl.getArticleAndReadCnt(0) 메서드
+[LA]메서드 예외 발생 후 수행함. 발생 예외=id는 0이 안 됨 =>LogginAdvice.afterThrowing() 메서드
+[LA]메서드 실행 후 수행 함 =>LogginAdvice.afterFinally()메서드
+[main] id는 0이 안 됨 =>main 메서드

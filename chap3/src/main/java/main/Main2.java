@@ -8,7 +8,7 @@ import xml.ReadArticleService;
 
 public class Main2 {
 	public static void main(String[] args) {
-		String[] config = { "di.xml", "aop2.xml" };
+		String[] config = { "di.xml", "aop2.xml" }; //두가지로도 만들 수 있다.
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(config);
 		ReadArticleService service = //service -> ReadArticleServiceImpl 객체 
 				ctx.getBean("readArticleService", ReadArticleService.class);
