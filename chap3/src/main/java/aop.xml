@@ -33,9 +33,9 @@
 	                        spring.LoginAspect
 	                
 	     advice : AOP이 실행되는 시점을 설정
-	       around : 핵심 메서드 실행 전, 후 
+	       around : 핵심 메서드 실행 전, 후 예외 발생 실행 후 실행 안 됨
 	       before : 핵심메서드 실행 전 
-	       after  : 핵심메서드 실행 후 
+	       after  : 핵심메서드 실행 후 예외 발생 시 실행 후 실행 됨?
 	       afterRetrunig : 핵심메서드 정상 실행 후              
 	       afterThrowing : 핵심메서드 오류 실행 후              
      -->
